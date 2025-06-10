@@ -1,13 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { ThemeProvider } from 'next-themes';
-import { CursorFollower } from '@/components/ui/cursor-follower';
-import { MagnifierFollower } from '../components/ui/magnifier-follower';
+import { ThemeProvider } from "next-themes";
+import { CursorFollower } from "@/components/ui/cursor-follower";
+import { MagnifierFollower } from "../components/ui/magnifier-follower";
 
 export const metadata: Metadata = {
   title: "Charuvarthan - Developer",
-  description: "Portfolio of Charuvarthan - Developer passionate about creating robust and scalable applications",
-  keywords: "developer, full stack, react, next.js, portfolio, web development",
+  description:
+    "Portfolio of Charuvarthan - Developer passionate about creating robust and scalable applications",
+  keywords:
+    "developer, full stack, react, next.js, portfolio, web development",
 };
 
 export default function RootLayout({
@@ -20,9 +22,8 @@ export default function RootLayout({
       <body className="antialiased cursor-hidden">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange={false}
+          defaultTheme="dark"
+          enableSystem={false}
         >
           <CursorFollower />
           <MagnifierFollower />
