@@ -1,0 +1,9 @@
+<a
+  href="/Charuvarthan-Resume.pdf"
+  download
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-apple-blue to-apple-green text-white font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
+>
+  Download Resume
+</a>
