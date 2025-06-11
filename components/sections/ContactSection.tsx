@@ -19,14 +19,14 @@ const socialLinks = [
 	{
 		name: "GitHub",
 		icon: Github,
-		href: "https://github.com",
+		href: "https://github.com/Charuvarthan",
 		color: "text-gray-400",
 		gradient: "from-gray-500/20 to-gray-600/20",
 	},
 	{
 		name: "LinkedIn",
 		icon: Linkedin,
-		href: "https://linkedin.com",
+		href: "https://www.linkedin.com/in/charuvarthan-t-7584262b8/",
 		color: "text-blue-600",
 		gradient: "from-blue-600/20 to-blue-700/20",
 	},
