@@ -35,7 +35,7 @@ export default function RootLayout({
             rel="noopener noreferrer"
             className="..." // your button classes
           >
-            Download CV
+            {/* Download CV */}
           </a>
         </ThemeProvider>
       </body>

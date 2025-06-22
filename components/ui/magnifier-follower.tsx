@@ -15,15 +15,15 @@ export function MagnifierFollower() {
     <div
       style={{
         position: 'fixed',
-        left: pos.x - 60,
-        top: pos.y - 60,
-        width: 120,
-        height: 120,
+        left: pos.x - 35, // changed from 60
+        top: pos.y - 35,  // changed from 60
+        width: 70,        // changed from 120
+        height: 70,       // changed from 120
         pointerEvents: 'none',
         zIndex: 9998,
         borderRadius: '50%',
         overflow: 'hidden',
-        boxShadow: '0 0 32px 8px #38bdf8, 0 0 64px 16px #a21caf',
+        boxShadow: '0 0 24px 4px #38bdf8, 0 0 48px 8px #a21caf', // softer shadow
         border: '2px solid #38bdf8',
         transition: 'box-shadow 0.2s',
         mixBlendMode: 'multiply',
@@ -34,7 +34,7 @@ export function MagnifierFollower() {
         style={{
           width: '100vw',
           height: '100vh',
-          transform: `translate(-${pos.x - 60}px, -${pos.y - 60}px) scale(1.25)`,
+          transform: `translate(-${pos.x - 35}px, -${pos.y - 35}px) scale(1.18)`, // scale reduced
           transition: 'transform 0.1s',
           pointerEvents: 'none',
         }}

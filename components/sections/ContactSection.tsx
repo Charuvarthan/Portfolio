@@ -140,7 +140,7 @@ export function ContactSection() {
 											name="name"
 											placeholder="Your Name"
 											required
-											className="bg-background/50 border-border/50 focus:border-apple-blue transition-colors duration-300"
+											className="bg-white dark:bg-apple-gray-900 border-border/50 focus:border-apple-blue transition-colors duration-300 resize-none"
 										/>
 									</div>
 									<div>
@@ -149,7 +149,7 @@ export function ContactSection() {
 											name="email"
 											placeholder="Your Email"
 											required
-											className="bg-background/50 border-border/50 focus:border-apple-blue transition-colors duration-300"
+											className="bg-white dark:bg-apple-gray-900 border-border/50 focus:border-apple-blue transition-colors duration-300 resize-none"
 										/>
 									</div>
 									<div>
@@ -158,7 +158,7 @@ export function ContactSection() {
 											placeholder="Your Message"
 											required
 											rows={6}
-											className="bg-background/50 border-border/50 focus:border-apple-blue transition-colors duration-300 resize-none"
+											className="bg-white dark:bg-apple-gray-900 border-border/50 focus:border-apple-blue transition-colors duration-300 resize-none"
 										/>
 									</div>
 									<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>

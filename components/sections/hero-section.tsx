@@ -8,7 +8,8 @@ export function HeroSection() {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
-  
+  const [isFading, setIsFading] = useState(false);
+
   const texts = [
     'Competitive Programmer',
     'Problem Solver',
@@ -20,19 +21,28 @@ export function HeroSection() {
     console.log('HeroSection component mounted');
     
     const currentText = texts[currentIndex];
-    const timer = setTimeout(() => {
+    let timer: NodeJS.Timeout;
+
+    if (!isFading) {
       if (displayText.length < currentText.length) {
-        setDisplayText(currentText.slice(0, displayText.length + 1));
+        timer = setTimeout(() => {
+          setDisplayText(currentText.slice(0, displayText.length + 1));
+        }, 70);
       } else {
-        setTimeout(() => {
-          setDisplayText('');
-          setCurrentIndex((prev) => (prev + 1) % texts.length);
-        }, 2000);
+        timer = setTimeout(() => {
+          setIsFading(true);
+        }, 500);
       }
-    }, 100);
+    } else {
+      timer = setTimeout(() => {
+        setDisplayText('');
+        setIsFading(false);
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+      }, 35); // fade out duration
+    }
 
     return () => clearTimeout(timer);
-  }, [displayText, currentIndex, texts]);
+  }, [displayText, currentIndex, texts, isFading]);
 
   useEffect(() => {
     const cursorTimer = setInterval(() => {
@@ -110,10 +120,18 @@ export function HeroSection() {
         >
           <h2 className="text-2xl md:text-4xl font-light text-apple-gray-600 dark:text-apple-gray-300 h-16 flex items-center justify-center">
             I'm a{' '}
-            <span className="ml-2 font-medium text-apple-blue">
-              {displayText}
-              <span className={`text-apple-blue ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
-                |
+            <span className="ml-2 font-medium text-apple-blue relative">
+              <span
+                style={{
+                  transition: 'opacity 0.35s',
+                  opacity: isFading ? 0 : 1,
+                  display: 'inline-block',
+                }}
+              >
+                {displayText}
+                <span className={`text-apple-blue ${showCursor && !isFading ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
+                  |
+                </span>
               </span>
             </span>
           </h2>
@@ -196,7 +214,7 @@ export function HeroSection() {
         }}
       />
       
-      <motion.div
+      {/* <motion.div
         className="absolute bottom-20 right-20 w-32 h-32 bg-apple-green/20 rounded-full blur-xl"
         animate={{
           y: [0, 20, 0],
@@ -208,7 +226,7 @@ export function HeroSection() {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-      />
+      /> */}
     </section>
   );
 }
