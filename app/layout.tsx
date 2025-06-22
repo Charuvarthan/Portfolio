@@ -28,6 +28,15 @@ export default function RootLayout({
           <CursorFollower />
           <MagnifierFollower />
           {children}
+          <a
+            href="/Charuvarthan_s_Resume.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="..." // your button classes
+          >
+            Download CV
+          </a>
         </ThemeProvider>
       </body>
     </html>

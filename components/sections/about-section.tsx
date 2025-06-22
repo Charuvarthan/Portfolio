@@ -322,7 +322,7 @@ export function AboutSection() {
 					className="flex justify-center mt-10"
 				>
 					<a
-						href="/Charuvarthan-Resume.pdf"
+						href="/Charuvarthan_s_Resume.pdf"
 						download
 						target="_blank"
 						rel="noopener noreferrer"
@@ -337,7 +337,7 @@ export function AboutSection() {
 							<path d="M25 15v14M25 29l-5-5m5 5l5-5" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 							<rect x="14" y="35" width="22" height="5" rx="2.5" fill="#fff" fillOpacity="0.2"/>
 						</svg>
-						Download CV
+						Download Resume
 						<span className="absolute -inset-1 rounded-2xl bg-apple-blue blur-lg opacity-40 animate-pulse -z-10"></span>
 					</a>
 				</motion.div>

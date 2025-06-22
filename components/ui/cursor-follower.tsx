@@ -62,7 +62,7 @@ export function CursorFollower({ className }: CursorFollowerProps) {
     <>
       {/* Vibrant animated cursor dot */}
       <motion.div
-        className={`fixed w-10 h-10 bg-gradient-to-br from-blue-500 via-cyan-400 to-fuchsia-500 rounded-full pointer-events-none z-[9999] mix-blend-difference shadow-2xl ${className}`}
+        className={`fixed w-6 h-6 bg-gradient-to-br from-blue-500 via-cyan-400 to-fuchsia-500 rounded-full pointer-events-none z-[9999] mix-blend-difference shadow-2xl ${className}`}
         animate={{
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
