@@ -11,36 +11,23 @@ export function MagnifierFollower() {
     return () => window.removeEventListener('mousemove', move);
   }, []);
 
+  // Simple soft grey fade ring, no magnification
   return (
     <div
       style={{
         position: 'fixed',
-        left: pos.x - 35, // changed from 60
-        top: pos.y - 35,  // changed from 60
-        width: 70,        // changed from 120
-        height: 70,       // changed from 120
+        left: pos.x - 28,
+        top: pos.y - 28,
+        width: 56,
+        height: 56,
         pointerEvents: 'none',
         zIndex: 9998,
         borderRadius: '50%',
-        overflow: 'hidden',
-        boxShadow: '0 0 24px 4px #38bdf8, 0 0 48px 8px #a21caf', // softer shadow
-        border: '2px solid #38bdf8',
-        transition: 'box-shadow 0.2s',
-        mixBlendMode: 'multiply',
+        boxShadow: '0 0 16px 8px #8884', // soft grey shadow
+        border: '2px solid #d1d5db', // Tailwind gray-300
+        background: 'transparent',
+        transition: 'box-shadow 0.2s, border 0.2s',
       }}
-      className="magnifier-follower"
-    >
-      <div
-        style={{
-          width: '100vw',
-          height: '100vh',
-          transform: `translate(-${pos.x - 35}px, -${pos.y - 35}px) scale(1.18)`, // scale reduced
-          transition: 'transform 0.1s',
-          pointerEvents: 'none',
-        }}
-      >
-        {/* This div overlays the whole page and magnifies the area under the cursor */}
-      </div>
-    </div>
+    />
   );
 }

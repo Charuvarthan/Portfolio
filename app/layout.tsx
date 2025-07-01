@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { CursorFollower } from "@/components/ui/cursor-follower";
-import { MagnifierFollower } from "../components/ui/magnifier-follower";
 
 export const metadata: Metadata = {
   title: "Charuvarthan - Developer",
@@ -26,7 +25,6 @@ export default function RootLayout({
           enableSystem={false}
         >
           <CursorFollower />
-          <MagnifierFollower />
           {children}
           <a
             href="/Charuvarthan_s_Resume.pdf"

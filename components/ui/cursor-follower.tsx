@@ -1,108 +1,67 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
-interface CursorFollowerProps {
-  className?: string;
-}
-
-export function CursorFollower({ className }: CursorFollowerProps) {
+// Minimal, professional custom cursor with pointer feedback
+export function CursorFollower() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const [isPointer, setIsPointer] = useState(false);
 
   useEffect(() => {
-    console.log('CursorFollower component mounted');
-    
+    // Hide system cursor
+    document.body.classList.add('cursor-hidden');
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
+    const handlePointerEnter = () => setIsPointer(true);
+    const handlePointerLeave = () => setIsPointer(false);
 
-    const handleMouseEnter = () => {
-      console.log('Mouse entered interactive element');
-      setIsHovering(true);
-    };
-
-    const handleMouseLeave = () => {
-      console.log('Mouse left interactive element');
-      setIsHovering(false);
-    };
-
-    // Track mouse movement
     window.addEventListener('mousemove', updateMousePosition);
-
-    // Add hover listeners to interactive elements
     const interactiveElements = document.querySelectorAll(
       'a, button, [role="button"], input, textarea, select, .magnetic-element'
     );
-
-    interactiveElements.forEach((element) => {
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
+    interactiveElements.forEach((el) => {
+      el.addEventListener('mouseenter', handlePointerEnter);
+      el.addEventListener('mouseleave', handlePointerLeave);
     });
 
-    // Add this for vibrant text on hover
-    if (isHovering) {
-      document.body.classList.add('cursor-vibrant-text');
-    } else {
-      document.body.classList.remove('cursor-vibrant-text');
-    }
-
     return () => {
+      document.body.classList.remove('cursor-hidden');
       window.removeEventListener('mousemove', updateMousePosition);
-      interactiveElements.forEach((element) => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
+      interactiveElements.forEach((el) => {
+        el.removeEventListener('mouseenter', handlePointerEnter);
+        el.removeEventListener('mouseleave', handlePointerLeave);
       });
-      document.body.classList.remove('cursor-vibrant-text');
     };
-  }, [isHovering]);
+  }, []);
 
+  // Always a subtle grey dot, slightly darker on pointer
+  const dotColor = isPointer ? '#6b7280' : '#9ca3af'; // Tailwind gray-500/400
+  const borderColor = isPointer ? '#4b5563' : '#d1d5db'; // Tailwind gray-600/300
+
+  // Minimal cursor: small dot with subtle border and shadow, color changes on pointer
   return (
-    <>
-      {/* Vibrant animated cursor dot */}
-      <motion.div
-        className={`fixed w-6 h-6 bg-gradient-to-br from-blue-500 via-cyan-400 to-fuchsia-500 rounded-full pointer-events-none z-[9999] mix-blend-difference shadow-2xl ${className}`}
-        animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isHovering ? 1.7 : 1,
-          rotate: isHovering ? 15 : 0,
-          boxShadow: isHovering
-            ? "0 0 40px 10px #38bdf8, 0 0 80px 20px #a21caf"
-            : "0 8px 32px 0 rgba(56,189,248,0.25), 0 2px 8px 0 rgba(168,85,247,0.10)"
-        }}
-        transition={{
-          type: 'tween', // changed from 'spring' to 'tween' for instant movement
-          ease: 'linear',
-          duration: 0, // no delay, follows cursor instantly
-        }}
-        style={{
-          background: "linear-gradient(135deg, #38bdf8 0%, #a21caf 100%)",
-          filter: "blur(0.5px)",
-        }}
-      />
-
-      {/* Animated vibrant ring */}
-      <motion.div
-        className="fixed w-20 h-20 border-4 border-fuchsia-400/40 rounded-full pointer-events-none z-[9998] transition"
-        animate={{
-          x: mousePosition.x - 40,
-          y: mousePosition.y - 40,
-          scale: isHovering ? 1.2 : 1,
-          rotate: isHovering ? -10 : 0,
-          borderColor: isHovering ? "#38bdf8" : "#a21caf",
-          opacity: isHovering ? 0.7 : 0.4,
-        }}
-        transition={{
-          type: 'tween',
-          ease: 'linear',
-          duration: 0,
-        }}
-        style={{
-          boxShadow: "0 0 32px 0 #a21caf44, 0 0 16px 0 #38bdf844"
-        }}
-      />
-    </>
+    <div
+      style={{
+        position: 'fixed',
+        left: mousePosition.x - 8,
+        top: mousePosition.y - 8,
+        width: 16,
+        height: 16,
+        borderRadius: '50%',
+        background: dotColor,
+        border: `2px solid ${borderColor}`,
+        boxShadow: isPointer
+          ? '0 0 8px 2px #6b728055, 0 0 2px 0 #4b556355'
+          : '0 1px 4px 0 #9ca3af22',
+        pointerEvents: 'none',
+        zIndex: 9999,
+        transition: 'background 0.18s, border 0.18s, box-shadow 0.18s',
+        mixBlendMode: 'normal',
+      }}
+    />
   );
 }
+
+export default CursorFollower;
