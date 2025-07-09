@@ -26,7 +26,7 @@ const socialLinks = [
 	{
 		name: "LinkedIn",
 		icon: Linkedin,
-		href: "https://www.linkedin.com/in/charuvarthan-t-7584262b8/",
+		href: "https://www.linkedin.com/in/charuvarthan/",
 		color: "text-blue-600",
 		gradient: "from-blue-600/20 to-blue-700/20",
 	},
